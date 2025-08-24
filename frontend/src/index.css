@@ -1,0 +1,338 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Gradient design system (light friendly) */
+.g-btn-primary {
+  background-image: linear-gradient(to right, #2563eb, #4f46e5);
+  color: #fff;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.15);
+  transition: background-position .3s, filter .3s;
+  position: relative;
+}
+
+.g-btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.g-btn-primary:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.g-btn-emerald {
+  background-image: linear-gradient(to right, #059669, #0d9488);
+  color: #fff;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.15);
+  transition: filter .3s;
+}
+
+.g-btn-emerald:hover {
+  filter: brightness(1.05);
+}
+
+.g-btn-emerald:focus {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
+.g-btn-neutral {
+  background-image: linear-gradient(to right, #334155, #0f172a);
+  color: #fff;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.15);
+  transition: filter .3s;
+}
+
+.g-btn-neutral:hover {
+  filter: brightness(1.07);
+}
+
+.g-btn-neutral:focus {
+  outline: 2px solid #334155;
+  outline-offset: 2px;
+}
+
+/* Light / white variant */
+.g-btn-white {
+  background-image: linear-gradient(to right, #ffffff, #f1f5f9);
+  color: #334155;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.08);
+  transition: filter .3s, box-shadow .3s;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.g-btn-white:hover {
+  filter: brightness(1.02);
+  box-shadow: 0 6px 14px -4px rgba(0, 0, 0, 0.15);
+}
+
+.g-btn-white:focus {
+  outline: 2px solid #94a3b8;
+  outline-offset: 2px;
+}
+
+/* Data table & badge utilities for admin UI */
+.g-table-wrapper {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px -6px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.g-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.g-table thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 600;
+  padding: 0.75rem 0.9rem;
+  background: linear-gradient(to right, rgba(241, 245, 249, 0.85), rgba(226, 232, 240, 0.85));
+  color: #334155;
+  position: relative;
+}
+
+.g-table thead th:first-child {
+  border-top-left-radius: 0.75rem;
+}
+
+.g-table thead th:last-child {
+  border-top-right-radius: 0.75rem;
+}
+
+.g-table tbody td {
+  padding: 0.65rem 0.9rem;
+  font-size: 0.8125rem;
+  vertical-align: middle;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.g-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.6);
+}
+
+.g-table tbody tr:hover {
+  background: rgba(226, 232, 240, 0.55);
+}
+
+.g-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 0.75rem;
+}
+
+.g-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 0.75rem;
+}
+
+.g-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.675rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .03em;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.5rem;
+}
+
+.g-badge-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+}
+
+.g-badge-danger {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #fff;
+}
+
+.g-badge-neutral {
+  background: linear-gradient(135deg, #64748b, #475569);
+  color: #fff;
+}
+
+.g-tab-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.g-tab-btn {
+  position: relative;
+  padding: 0.6rem 1.1rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  color: #475569;
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: .25s;
+}
+
+.g-tab-btn:hover {
+  color: #0f172a;
+  box-shadow: 0 4px 10px -3px rgba(0, 0, 0, 0.15);
+}
+
+.g-tab-btn.is-active {
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: #fff;
+  box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.4);
+}
+
+.g-surface-glass {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.g-surface-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px -4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow .25s;
+}
+
+.g-surface-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 8px 24px -8px rgba(0, 0, 0, 0.12);
+}
+
+.g-heading-gradient {
+  background: linear-gradient(to right, #0f172a, #334155, #0f172a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.g-radial-overlay-dark {
+  background: radial-gradient(circle at 25% 20%, rgba(15, 23, 42, 0.12), transparent 55%), radial-gradient(circle at 80% 70%, rgba(30, 41, 59, 0.10), transparent 60%);
+}
+
+/* Stronger dark logo gradient with subtle light glow for contrast on dark/translucent backgrounds */
+.g-logo-heading {
+  background: linear-gradient(to right, #0b0f19, #1e293b, #0b0f19);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Page / section background gradients */
+.g-bg-page {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 45%, #f1f5f9 100%);
+}
+
+.g-bg-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+}
+
+/* Utility to clamp multi-line text without plugin fallback */
+.g-line-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.g-line-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.g-line-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1e2939;
+}
+
+p {
+  color: #364153;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Reaction click animation */
+@keyframes reaction-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(.85);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-reaction-pop {
+  animation: reaction-pop .35s cubic-bezier(.34, 1.56, .64, 1);
+}
