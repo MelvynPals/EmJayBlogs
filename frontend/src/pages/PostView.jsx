@@ -89,29 +89,31 @@ export default function PostView() {
                 <Link to="/feature" className="text-indigo-600 hover:underline">← Back</Link>
             </div>
 
-            {/* Hero / cover */}
-            {post.coverUrl ? (
-                <div className="relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5 mb-10">
-                    <img src={resolveMediaUrl(post.coverUrl)} alt="cover" className="w-full h-[340px] object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight drop-shadow g-heading-gradient" style={{ WebkitTextFillColor: 'unset' }}>{post.title}</h1>
-                        <div className="mt-4 flex flex-wrap gap-3 text-[11px] text-slate-200 font-medium">
-                            <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur shadow-sm">By {post.author?.name || 'Unknown'}</span>
-                            <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur shadow-sm">{created.toLocaleDateString()} • {created.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                            <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur shadow-sm">{wordCount} words</span>
-                            <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur shadow-sm">{readMins} min read</span>
-                        </div>
+            {/* Title always first; metadata chips move into cover if cover exists */}
+            <div className="mb-4">
+                <h1 className="text-3xl sm:text-4xl font-bold g-heading-gradient leading-tight break-words">{post.title}</h1>
+                {!post.coverUrl && (
+                    <div className="mt-3 flex flex-wrap gap-3 text-[11px] font-medium">
+                        <span className="px-3 py-1 rounded-full bg-white/80 shadow-sm border border-slate-200 text-slate-700">By {post.author?.name || 'Unknown'}</span>
+                        <span className="px-3 py-1 rounded-full bg-white/80 shadow-sm border border-slate-200 text-slate-600">{created.toLocaleDateString()} • {created.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <span className="px-3 py-1 rounded-full bg-white/80 shadow-sm border border-slate-200 text-slate-600">{wordCount} words</span>
+                        <span className="px-3 py-1 rounded-full bg-white/80 shadow-sm border border-slate-200 text-slate-600">{readMins} min read</span>
                     </div>
-                </div>
-            ) : (
-                <div className="mb-8">
-                    <h1 className="text-3xl sm:text-4xl font-bold g-heading-gradient leading-tight">{post.title}</h1>
-                    <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-slate-600 font-medium">
-                        <span className="px-3 py-1 rounded-full bg-white/70 shadow-sm border border-slate-200">By {post.author?.name}</span>
-                        <span className="px-3 py-1 rounded-full bg-white/70 shadow-sm border border-slate-200">{created.toLocaleDateString()} • {created.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                        <span className="px-3 py-1 rounded-full bg-white/70 shadow-sm border border-slate-200">{wordCount} words</span>
-                        <span className="px-3 py-1 rounded-full bg-white/70 shadow-sm border border-slate-200">{readMins} min read</span>
+                )}
+            </div>
+
+            {post.coverUrl && (
+                <div className="relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5 mb-8">
+                    <img src={resolveMediaUrl(post.coverUrl)} alt="cover" className="w-full h-[340px] object-cover" />
+                    {/* Subtle gradient (minor) */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 pointer-events-none">
+                        <div className="flex flex-wrap gap-2 text-[10px] sm:text-[11px] font-medium">
+                            <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-sm text-white shadow-sm">By {post.author?.name || 'Unknown'}</span>
+                            <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-sm text-slate-100 shadow-sm">{created.toLocaleDateString()} • {created.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                            <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-sm text-slate-100 shadow-sm">{wordCount} words</span>
+                            <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-sm text-slate-100 shadow-sm">{readMins} min read</span>
+                        </div>
                     </div>
                 </div>
             )}

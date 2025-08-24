@@ -34,7 +34,7 @@ From the project root:
 
  
 ```bash
-git clone <your-repo-url> blog-web-app
+git clone https://github.com/MelvynPals/EmJayBlogs.git
 cd blog-web-app
 ```
 

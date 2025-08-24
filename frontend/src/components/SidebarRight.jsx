@@ -29,9 +29,9 @@ export default function SidebarRight() {
             <div className="bg-white shadow-sm g-surface-card p-4 ">
                 <div className="flex items-center gap-3">
                     <img src={user.avatarUrl ? resolveMediaUrl(user.avatarUrl) : defaultAvatar} alt="avatar" className="w-12 h-12 rounded-full object-cover" />
-                    <div>
-                        <div className="font-semibold">{user.name}</div>
-                        <div className="text-sm text-gray-500">@{(user.email || '').split('@')[0]}</div>
+                    <div className="min-w-0">
+                        <div className="font-semibold truncate max-w-[140px]" title={user.name}>{user.name}</div>
+                        <div className="text-sm text-gray-500 truncate max-w-[140px]" title={(user.email || '').split('@')[0]}>@{(user.email || '').split('@')[0]}</div>
                         {/* Removed title */}
                     </div>
                 </div>
